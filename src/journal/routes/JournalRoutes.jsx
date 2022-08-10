@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { JournalLayout } from "../layouts/JournalLayout"
+import { JournalPage } from "../pages/JournalPage"
 
 
 export const JournalRoutes = () => {
   return (
     <Routes>
-        <Route path="/" element={<JournalLayout />} />
+        <Route path="/" element={<JournalPage />} />
         <Route path="/*" element={ <Navigate to="/" />} />
     </Routes>
   )
