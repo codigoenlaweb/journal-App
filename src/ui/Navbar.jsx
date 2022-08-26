@@ -2,15 +2,24 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
+import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { startLogout } from "../store/auth/thunks";
 
 const drawerWidth = 240;
 
-export default function Navbar({ setMobileOpen, mobileOpen }) {
+export const Navbar = ({ setMobileOpen, mobileOpen }) => {
+  const dispatch = useDispatch();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const onLogout = () => {
+    dispatch(startLogout());
   };
 
   return (
@@ -19,25 +28,31 @@ export default function Navbar({ setMobileOpen, mobileOpen }) {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { sm: `calc(100% - ${mobileOpen ? drawerWidth : 0}px)` },
+          ml: { sm: `${mobileOpen ? drawerWidth : 0}px` },
         }}
+        className="animate__animated animate__fadeInDown"
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
-          </Typography>
+          <Grid container justifyContent="space-between" alignItems="center">
+            <Grid item sx={{ display: "displayFlex"}} alignItems="center">
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" noWrap component="div">
+                Journal App
+              </Typography>
+            </Grid>
+            <LogoutIcon color="error" cursor="pointer" onClick={onLogout} />
+          </Grid>
         </Toolbar>
       </AppBar>
     </>
   );
-}
+};

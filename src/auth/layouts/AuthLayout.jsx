@@ -11,7 +11,7 @@ export const AuthLayout = ({children, title=""}) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Grid item xs={11} sm={7} md={4} className="bg-white rounded shadow-xl p-4">
+      <Grid item xs={11} sm={7} md={4} className="bg-white rounded shadow-xl p-4 animate__animated animate__fadeIn">
         <Typography variant="h5" className="">
           {title}
         </Typography>

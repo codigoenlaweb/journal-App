@@ -16,8 +16,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Navbar from "../../ui/Navbar";
 import { SideBar } from "../../ui/SideBar";
+import { Navbar } from "../../ui/Navbar";
 
 const drawerWidth = 240;
 
@@ -33,7 +33,7 @@ export const JournalLayout = ({ children }, props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} className="overflow-x-hidden">
       <Navbar setMobileOpen={setMobileOpen} mobileOpen={mobileOpen} />
       <SideBar setMobileOpen={setMobileOpen} mobileOpen={mobileOpen} window={window} />
       <Box
@@ -41,8 +41,9 @@ export const JournalLayout = ({ children }, props) => {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - ${0}px)` },
         }}
+        className="animate__animated animate__fadeInRight"
       >
         <Toolbar />
         {children}

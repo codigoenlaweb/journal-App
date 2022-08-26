@@ -16,11 +16,12 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 240;
 
 export function SideBar({ setMobileOpen, mobileOpen, window }) {
-
+  const { displayName } = useSelector((state) => state.auth);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -30,7 +31,7 @@ export function SideBar({ setMobileOpen, mobileOpen, window }) {
 
   const drawer = (
     <div>
-      <Typography variant="h6" className=" text-center py-4 px-2">Jesus OLmos</Typography>
+      <Typography variant="h6" color={"secondary.main"} className="py-4 px-4">{displayName}</Typography>
       <Divider />
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
@@ -50,7 +51,7 @@ export function SideBar({ setMobileOpen, mobileOpen, window }) {
   return (
     <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: mobileOpen? drawerWidth:0 }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -73,7 +74,7 @@ export function SideBar({ setMobileOpen, mobileOpen, window }) {
           {drawer}
         </Drawer>
         <Drawer
-          variant="permanent"
+          variant="temporary"
           sx={{
             display: { xs: "none", sm: "block" },
             "& .MuiDrawer-paper": {
@@ -81,7 +82,8 @@ export function SideBar({ setMobileOpen, mobileOpen, window }) {
               width: drawerWidth,
             },
           }}
-          open
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
         >
           {drawer}
         </Drawer>
