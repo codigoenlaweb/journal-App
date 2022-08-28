@@ -10,6 +10,8 @@ import {
 } from "../../store/auth/thunks";
 import { AuthLayout } from "../layouts/AuthLayout";
 
+const formData = { email: "", password: "" };
+
 export const LoginPage = () => {
   // FORMS
   const formValdations = {
@@ -27,7 +29,7 @@ export const LoginPage = () => {
     password,
     passwordValid,
     onInputChange,
-  } = useForm({ email: "", password: "" }, formValdations);
+  } = useForm(formData, formValdations);
   // REDUX
   const { status, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();

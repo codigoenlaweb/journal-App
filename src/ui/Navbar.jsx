@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { startLogout } from "../store/auth/thunks";
+import { MenuBook } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -41,15 +42,15 @@ export const Navbar = ({ setMobileOpen, mobileOpen }) => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2 }}
+                sx={{ mr: 2, ml:1, fontSize:"32px"}}
               >
-                <MenuIcon />
+                <MenuBook sx={{fontSize:"28px"}} />
               </IconButton>
-              <Typography variant="h6" noWrap component="div">
+              <Typography variant="h5" noWrap component="div">
                 Journal App
               </Typography>
             </Grid>
-            <LogoutIcon color="error" cursor="pointer" onClick={onLogout} />
+            <LogoutIcon sx={{ mr: 1, fontSize:"28px"}} color="error" cursor="pointer" onClick={onLogout} />
           </Grid>
         </Toolbar>
       </AppBar>

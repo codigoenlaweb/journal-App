@@ -5,6 +5,7 @@ import {
   logoutFirebase,
   registerUserWithEmail,
 } from "../../firebase/providers";
+import { clearNoteLogout } from "../journal/journalSlice";
 import { checkingAuth, login, logout } from "./authSlice";
 
 export const checkingCredentials = () => {
@@ -82,12 +83,9 @@ export const startLogout = () => {
     dispatch(checkingAuth());
     const result = await logoutFirebase();
     if (result.ok) {
-      return dispatch(
-        logout({
-          error: null,
-        })
-      );
-    }else {
+      dispatch(logout({ error: null }));
+      dispatch(clearNoteLogout());
+    } else {
       return;
     }
   };
