@@ -1,6 +1,6 @@
 <h1 align="center">Journal App</h1> 
 
-![View project](https://github.com/codigoenlaweb/gifexpertapp/blob/master/src/assets/images/imgreadme1.jpeg)
+![View project](https://github.com/codigoenlaweb/journal-App/blob/master/public/journal-app.jpeg)
 
 <h4 align="center">Your website to see your diary notes of the day</h4>
 <div align="center">
